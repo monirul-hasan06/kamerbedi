@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ব্লগ - Kamer Bedi</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .blog-content {
+            padding: 24px;
+        }
+        .blog-content .tag {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .blog-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        .blog-content p {
+            color: var(--gray);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .blog-content .read-more {
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .blog-content .read-more:hover {
+            color: var(--primary-dark);
+        }
+        .blog-content .date {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-top: 12px;
+            display: block;
+        }
+        .sidebar {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .sidebar h3 {
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+        .sidebar ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .sidebar ul li a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        .sidebar ul li a:hover {
+            color: var(--primary);
+        }
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-icon">🧹</span>
+                <span class="brand-text">Kamer Bedi</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">হোম</a></li>
+                <li><a href="services.html">সেবাসমূহ</a></li>
+                <li><a href="post-job.html">চাকরি পোস্ট করুন</a></li>
+                <li><a href="find-work.html">কাজ খুঁজুন</a></li>
+                <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                <li><a href="blog.html" class="active">ব্লগ</a></li>
+                <li><a href="contact.html">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="padding: 60px 0;">
+        <div class="container">
+            <h1 class="hero-title">আমাদের <span class="highlight">ব্লগ</span></h1>
+            <p class="hero-subtitle">ঘর সামলানো, কর্মী ব্যবস্থাপনা ও জীবনের নানা টিপস</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section style="padding: 60px 0; background: var(--light-gray);">
+        <div class="container">
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">🧹</div>
+                    <div class="blog-content">
+                        <span class="tag">ঘর সামলানো</span>
+                        <h3>১০ মিনিটে ঘর পরিষ্কার করার টিপস</h3>
+                        <p>ব্যস্ত জীবনে কীভাবে দ্রুত এবং কার্যকরীভাবে ঘর পরিষ্কার করবেন?</p>
+                        <span class="read-more" onclick="readBlog('১০ মিনিটে ঘর পরিষ্কার')">আরও পড়ুন →</span>
+                        <span class="date">📅 ১৫ জানুয়ারি, ২০২৬</span>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">👩‍🍳</div>
+                    <div class="blog-content">
+                        <span class="tag">রান্না</span>
+                        <h3>৫টি সহজ ও স্বাস্থ্যকর রেসিপি</h3>
+                        <p>স্বাস্থ্যকর এবং দ্রুত প্রস্তুত করা যায় এমন ৫টি রেসিপি জেনে নিন।</p>
+                        <span class="read-more" onclick="readBlog('৫টি সহজ রেসিপি')">আরও পড়ুন →</span>
+                        <span class="date">📅 ১০ জানুয়ারি, ২০২৬</span>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🤝</div>
+                    <div class="blog-content">
+                        <span class="tag">কর্মী ব্যবস্থাপনা</span>
+                        <h3>গৃহকর্মীদের সাথে ভালো সম্পর্ক গড়ার ৭টি উপায়</h3>
+                        <p>কীভাবে আপনার গৃহকর্মীর সাথে সুসম্পর্ক তৈরি করবেন এবং কাজের পরিবেশ উন্নত করবেন।</p>
+                        <span class="read-more" onclick="readBlog('গৃহকর্মীদের সাথে সম্পর্ক')">আরও পড়ুন →</span>
+                        <span class="date">📅 ৫ জানুয়ারি, ২০২৬</span>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">⚖️</div>
+                    <div class="blog-content">
+                        <span class="tag">আইনগত</span>
+                        <h3>গৃহকর্মীদের অধিকার ও আইন</h3>
+                        <p>বাংলাদেশে গৃহকর্মীদের আইনগত অধিকার ও কর্তব্য সম্পর্কে জানুন।</p>
+                        <span class="read-more" onclick="readBlog('গৃহকর্মীদের অধিকার')">আরও পড়ুন →</span>
+                        <span class="date">📅 ২৮ ডিসেম্বর, ২০২৫</span>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🌿</div>
+                    <div class="blog-content">
+                        <span class="tag">ঘর সাজানো</span>
+                        <h3>ছোট জায়গায় বাগান করার উপায়</h3>
+                        <p>ব্যালকনি বা ছোট জায়গায় কীভাবে একটি সুন্দর বাগান তৈরি করবেন।</p>
+                        <span class="read-more" onclick="readBlog('ছোট জায়গায় বাগান')">আরও পড়ুন →</span>
+                        <span class="date">📅 ২০ ডিসেম্বর, ২০২৫</span>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">💰</div>
+                    <div class="blog-content">
+                        <span class="tag">আর্থিক</span>
+                        <h3>গৃহস্থালি খরচ কমানোর ১০টি কার্যকরী উপায়</h3>
+                        <p>মাসিক খরচ কমিয়ে কীভাবে সঞ্চয় বাড়ানো যায় তা জানুন।</p>
+                        <span class="read-more" onclick="readBlog('গৃহস্থালি খরচ কমানো')">আরও পড়ুন →</span>
+                        <span class="date">📅 ১৫ ডিসেম্বর, ২০২৫</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+                    <div>
+                        <h3>📝 জনপ্রিয় পোস্ট</h3>
+                        <ul>
+                            <li><a href="#" onclick="readBlog('গৃহকর্মীদের সাথে সম্পর্ক')">গৃহকর্মীদের সাথে ভালো সম্পর্ক গড়ার ৭টি উপায়</a></li>
+                            <li><a href="#" onclick="readBlog('গৃহস্থালি খরচ কমানো')">গৃহস্থালি খরচ কমানোর ১০টি উপায়</a></li>
+                            <li><a href="#" onclick="readBlog('৫টি সহজ রেসিপি')">৫টি সহজ ও স্বাস্থ্যকর রেসিপি</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>🏷️ ট্যাগ</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--light-gray); padding: 4px 12px; border-radius: 12px;">ঘর সামলানো</span>
+                            <span style="background: var(--light-gray); padding: 4px 12px; border-radius: 12px;">রান্না</span>
+                            <span style="background: var(--light-gray); padding: 4px 12px; border-radius: 12px;">কর্মী</span>
+                            <span style="background: var(--light-gray); padding: 4px 12px; border-radius: 12px;">স্বাস্থ্য</span>
+                            <span style="background: var(--light-gray); padding: 4px 12px; border-radius: 12px;">আইন</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>🧹 Kamer Bedi</h3>
+                    <p>কাজের মানুষ, সম্মানের মানুষ</p>
+                </div>
+                <div class="footer-col">
+                    <h4>লিংক</h4>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>সাপোর্ট</h4>
+                    <ul>
+                        <li><a href="#">প্রায়শই জিজ্ঞাসিত প্রশ্ন</a></li>
+                        <li><a href="#">গোপনীয়তা নীতি</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>যোগাযোগ</h4>
+                    <p>📧 info@kamerbedi.com</p>
+                    <p>📞 +৮৮০ ১৭০০-০০০০০০</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kamer Bedi. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        function readBlog(title) {
+            alert(`📖 "${title}"\n\nএই আর্টিকেলটি পড়ার জন্য ধন্যবাদ!\nশীঘ্রই সম্পূর্ণ আর্টিকেল আমাদের সাইটে প্রকাশিত হবে।`);
+        }
+    </script>
+</body>
+</html>

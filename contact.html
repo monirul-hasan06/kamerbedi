@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>যোগাযোগ - Kamer Bedi</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .contact-info {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        .contact-info p {
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-item .icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-item .text {
+            flex: 1;
+        }
+        .contact-item .text strong {
+            display: block;
+            color: var(--dark);
+        }
+        .contact-item .text span {
+            color: var(--gray);
+        }
+        .map-container {
+            margin-top: 30px;
+            background: var(--light-gray);
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+        .social-links-full {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .social-links-full a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--light-gray);
+            border-radius: 12px;
+            transition: var(--transition);
+            color: var(--dark);
+            text-decoration: none;
+        }
+        .social-links-full a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .success-message {
+            display: none;
+            background: #D1FAE5;
+            color: #065F46;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .success-message.show {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-links-full {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-icon">🧹</span>
+                <span class="brand-text">Kamer Bedi</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">হোম</a></li>
+                <li><a href="services.html">সেবাসমূহ</a></li>
+                <li><a href="post-job.html">চাকরি পোস্ট করুন</a></li>
+                <li><a href="find-work.html">কাজ খুঁজুন</a></li>
+                <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                <li><a href="blog.html">ব্লগ</a></li>
+                <li><a href="contact.html" class="active">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="padding: 60px 0;">
+        <div class="container">
+            <h1 class="hero-title">আমাদের সাথে <span class="highlight">যোগাযোগ</span> করুন</h1>
+            <p class="hero-subtitle">যেকোনো প্রশ্ন, মতামত বা সাহায্যের জন্য আমাদের জানান</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section style="padding: 60px 0; background: var(--light-gray);">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3>📞 যোগাযোগের তথ্য</h3>
+                    <p>আমরা সোম-শুক্র সকাল ৯টা থেকে রাত ৮টা পর্যন্ত উপলব্ধ</p>
+
+                    <div class="contact-item">
+                        <div class="icon">📱</div>
+                        <div class="text">
+                            <strong>ফোন</strong>
+                            <span>+৮৮০ ১৭০০-০০০০০০</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <div class="text">
+                            <strong>ইমেইল</strong>
+                            <span>info@kamerbedi.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <div class="text">
+                            <strong>ঠিকানা</strong>
+                            <span>ঢাকা, বাংলাদেশ</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon">🕐</div>
+                        <div class="text">
+                            <strong>কার্যকাল</strong>
+                            <span>সকাল ৯টা - রাত ৮টা (সোম-শুক্র)</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links-full">
+                        <a href="#">📘 ফেসবুক</a>
+                        <a href="#">📸 ইনস্টাগ্রাম</a>
+                        <a href="#">▶️ ইউটিউব</a>
+                        <a href="#">📱 হোয়াটসঅ্যাপ</a>
+                    </div>
+
+                    <div class="map-container">
+                        🗺️ গুগল ম্যাপ (ঢাকা, বাংলাদেশ)
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="form-container">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 8px;">📝 বার্তা পাঠান</h3>
+                    <p style="color: var(--gray); margin-bottom: 24px;">আমরা ২৪ ঘন্টার মধ্যে উত্তর দেব</p>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>আপনার নাম <span class="required">*</span></label>
+                            <input type="text" placeholder="আপনার পূর্ণ নাম" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>ইমেইল <span class="required">*</span></label>
+                            <input type="email" placeholder="your@email.com" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label>মোবাইল নম্বর</label>
+                            <input type="tel" placeholder="০১XXXXXXXXX" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>বিষয় <span class="required">*</span></label>
+                            <select required>
+                                <option value="">বিষয় নির্বাচন করুন</option>
+                                <option>সেবা সংক্রান্ত প্রশ্ন</option>
+                                <option>অভিযোগ</option>
+                                <option>পরামর্শ</option>
+                                <option>সহযোগিতা</option>
+                                <option>অন্যান্য</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>বার্তা <span class="required">*</span></label>
+                            <textarea placeholder="আপনার বার্তা লিখুন..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">📤 বার্তা পাঠান</button>
+                    </form>
+
+                    <div class="success-message" id="contactSuccess">
+                        <h3>✅ বার্তা সফলভাবে পাঠানো হয়েছে!</h3>
+                        <p>আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Preview -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <h2 class="section-title">প্রায়শই জিজ্ঞাসিত <span class="highlight">প্রশ্ন</span></h2>
+            <div style="max-width: 800px; margin: 40px auto 0;">
+                <div style="background: var(--white); padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 16px;">
+                    <h4 style="color: var(--primary);">❓ কিভাবে একজন কর্মী খুঁজব?</h4>
+                    <p style="color: var(--gray); margin-top: 8px;">আপনি "চাকরি পোস্ট করুন" পেজে গিয়ে আপনার প্রয়োজনীয় কাজের বিবরণ দিলে আমরা সঠিক কর্মী খুঁজে দেব।</p>
+                </div>
+                <div style="background: var(--white); padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 16px;">
+                    <h4 style="color: var(--primary);">❓ সেবার মূল্য কেমন?</h4>
+                    <p style="color: var(--gray); margin-top: 8px;">প্রতিটি সেবার মূল্য আলাদা। আপনি "সেবাসমূহ" পেজ থেকে প্রতিটি সেবার মূল্য দেখতে পারেন।</p>
+                </div>
+                <div style="background: var(--white); padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow);">
+                    <h4 style="color: var(--primary);">❓ কিভাবে নিবন্ধন করব?</h4>
+                    <p style="color: var(--gray); margin-top: 8px;">"কাজ খুঁজুন" পেজে গিয়ে নিবন্ধন ফর্ম পূরণ করুন। আমাদের টিম আপনার সাথে যোগাযোগ করবে।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>🧹 Kamer Bedi</h3>
+                    <p>কাজের মানুষ, সম্মানের মানুষ</p>
+                </div>
+                <div class="footer-col">
+                    <h4>লিংক</h4>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>সাপোর্ট</h4>
+                    <ul>
+                        <li><a href="#">প্রায়শই জিজ্ঞাসিত প্রশ্ন</a></li>
+                        <li><a href="#">গোপনীয়তা নীতি</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>যোগাযোগ</h4>
+                    <p>📧 info@kamerbedi.com</p>
+                    <p>📞 +৮৮০ ১৭০০-০০০০০০</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kamer Bedi. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.form-submit');
+            btn.textContent = '⏳ পাঠানো হচ্ছে...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                document.getElementById('contactSuccess').classList.add('show');
+                this.reset();
+                btn.textContent = '📤 বার্তা পাঠান';
+                btn.disabled = false;
+                setTimeout(() => {
+                    document.getElementById('contactSuccess').classList.remove('show');
+                }, 5000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

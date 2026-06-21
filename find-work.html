@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>কাজ খুঁজুন - Kamer Bedi</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .worker-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .job-listings {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .job-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+        .job-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .job-card h3 {
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .job-card .job-meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 8px 0;
+        }
+        .job-card .job-meta span {
+            background: var(--light-gray);
+            padding: 2px 12px;
+            border-radius: 12px;
+        }
+        .job-card .apply-btn {
+            margin-top: 12px;
+            padding: 8px 24px;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        .job-card .apply-btn:hover {
+            transform: scale(1.05);
+            background: #166534;
+        }
+        .tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .tab-btn {
+            padding: 10px 24px;
+            border-radius: 25px;
+            border: 2px solid #E5E7EB;
+            background: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+        .tab-btn:hover {
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-icon">🧹</span>
+                <span class="brand-text">Kamer Bedi</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">হোম</a></li>
+                <li><a href="services.html">সেবাসমূহ</a></li>
+                <li><a href="post-job.html">চাকরি পোস্ট করুন</a></li>
+                <li><a href="find-work.html" class="active">কাজ খুঁজুন</a></li>
+                <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                <li><a href="blog.html">ব্লগ</a></li>
+                <li><a href="contact.html">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="padding: 60px 0;">
+        <div class="container">
+            <h1 class="hero-title">আপনার পছন্দের <span class="highlight">কাজ</span> খুঁজুন</h1>
+            <p class="hero-subtitle">হাজার হাজার চাকরির সুযোগ থেকে আপনার জন্য সঠিকটি বেছে নিন</p>
+        </div>
+    </section>
+
+    <!-- Job Listings -->
+    <section style="padding: 60px 0; background: var(--light-gray);">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="filterJobs('all')">সব কাজ</button>
+                <button class="tab-btn" onclick="filterJobs('household')">ঘর কাজ</button>
+                <button class="tab-btn" onclick="filterJobs('cooking')">রান্না</button>
+                <button class="tab-btn" onclick="filterJobs('care')">যত্ন</button>
+                <button class="tab-btn" onclick="filterJobs('driving')">ড্রাইভার</button>
+                <button class="tab-btn" onclick="filterJobs('technical')">কারিগরি</button>
+            </div>
+
+            <div class="job-listings" id="jobListings">
+                <div class="job-card" data-category="household">
+                    <h3>🧹 বাড়ির কাজের জন্য সাহায্যকারী দরকার</h3>
+                    <div class="job-meta">
+                        <span>📍 ঢাকা, মিরপুর</span>
+                        <span>⏰ পূর্ণ সময়</span>
+                        <span>💰 ৳ ৬০০০/মাস</span>
+                    </div>
+                    <p>একটি পরিবারের জন্য দিনে ৬ ঘন্টা ঘর কাজ করার জন্য একজন দক্ষ মহিলা দরকার।</p>
+                    <button class="apply-btn" onclick="applyJob('বাড়ির কাজের জন্য সাহায্যকারী')">আবেদন করুন</button>
+                </div>
+
+                <div class="job-card" data-category="cooking">
+                    <h3>🍳 রান্নার জন্য দক্ষ রাঁধুনী দরকার</h3>
+                    <div class="job-meta">
+                        <span>📍 চট্টগ্রাম, নাসিরাবাদ</span>
+                        <span>⏰ আংশিক সময়</span>
+                        <span>💰 ৳ ৪০০/দিন</span>
+                    </div>
+                    <p>দুপুর ও রাতের খাবার রান্নার জন্য একজন দক্ষ রাঁধুনী দরকার।</p>
+                    <button class="apply-btn" onclick="applyJob('রান্নার জন্য দক্ষ রাঁধুনী')">আবেদন করুন</button>
+                </div>
+
+                <div class="job-card" data-category="care">
+                    <h3>👶 শিশু পরিচর্যাকারী দরকার</h3>
+                    <div class="job-meta">
+                        <span>📍 রাজশাহী, বোয়ালিয়া</span>
+                        <span>⏰ পূর্ণ সময়</span>
+                        <span>💰 ৳ ৮০০০/মাস</span>
+                    </div>
+                    <p>২ বছরের শিশুর দেখাশোনার জন্য অভিজ্ঞ একজন মহিলা দরকার।</p>
+                    <button class="apply-btn" onclick="applyJob('শিশু পরিচর্যাকারী')">আবেদন করুন</button>
+                </div>
+
+                <div class="job-card" data-category="driving">
+                    <h3>🚗 ব্যক্তিগত ড্রাইভার দরকার</h3>
+                    <div class="job-meta">
+                        <span>📍 ঢাকা, গুলশান</span>
+                        <span>⏰ পূর্ণ সময়</span>
+                        <span>💰 ৳ ১৫০০০/মাস</span>
+                    </div>
+                    <p>একজন অভিজ্ঞ ড্রাইভার দরকার যিনি ঢাকার রাস্তা ভালো জানেন।</p>
+                    <button class="apply-btn" onclick="applyJob('ব্যক্তিগত ড্রাইভার')">আবেদন করুন</button>
+                </div>
+
+                <div class="job-card" data-category="technical">
+                    <h3>🔧 বৈদ্যুতিক মিস্ত্রি দরকার</h3>
+                    <div class="job-meta">
+                        <span>📍 সিলেট, জিন্দাবাজার</span>
+                        <span>⏰ কাজভিত্তিক</span>
+                        <span>💰 ৳ ১০০০/কাজ</span>
+                    </div>
+                    <p>একটি দোকানের বৈদ্যুতিক কাজ করার জন্য অভিজ্ঞ মিস্ত্রি দরকার।</p>
+                    <button class="apply-btn" onclick="applyJob('বৈদ্যুতিক মিস্ত্রি')">আবেদন করুন</button>
+                </div>
+
+                <div class="job-card" data-category="household">
+                    <h3>🧺 কাপড় ধোয়া ও ইস্ত্রি করার সাহায্যকারী দরকার</h3>
+                    <div class="job-meta">
+                        <span>📍 খুলনা, সিটি সেন্টার</span>
+                        <span>⏰ দৈনিক</span>
+                        <span>💰 ৳ ৩০০/দিন</span>
+                    </div>
+                    <p>প্রতিদিন ২ ঘন্টা কাপড় ধোয়া ও ইস্ত্রি করার জন্য একজন সাহায্যকারী দরকার।</p>
+                    <button class="apply-btn" onclick="applyJob('কাপড় ধোয়া ও ইস্ত্রি')">আবেদন করুন</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Worker Registration -->
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <h2 class="section-title">আপনার প্রোফাইল <span class="highlight">তৈরি করুন</span></h2>
+            <p class="section-subtitle">নিবন্ধন করুন এবং কাজের সুযোগ পান</p>
+            
+            <div class="worker-form">
+                <form id="workerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>আপনার নাম <span class="required">*</span></label>
+                            <input type="text" placeholder="আপনার পূর্ণ নাম" required />
+                        </div>
+                        <div class="form-group">
+                            <label>মোবাইল নম্বর <span class="required">*</span></label>
+                            <input type="tel" placeholder="০১XXXXXXXXX" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>আপনি কোন কাজে দক্ষ? <span class="required">*</span></label>
+                        <select required>
+                            <option value="">নির্বাচন করুন</option>
+                            <option value="household">ঘর কাজ</option>
+                            <option value="cooking">রান্না</option>
+                            <option value="care">বাচ্চা/বয়স্ক যত্ন</option>
+                            <option value="driving">ড্রাইভার</option>
+                            <option value="technical">কারিগরি কাজ</option>
+                            <option value="gardening">বাগান করা</option>
+                            <option value="multiple">একাধিক কাজে দক্ষ</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>বয়স</label>
+                            <input type="number" placeholder="বয়স" min="18" max="65" />
+                        </div>
+                        <div class="form-group">
+                            <label>অভিজ্ঞতা (বছর)</label>
+                            <input type="number" placeholder="কত বছর অভিজ্ঞতা" min="0" max="50" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>আপনার এলাকা <span class="required">*</span></label>
+                        <input type="text" placeholder="আপনি কোন এলাকায় কাজ করতে পারেন?" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>আপনার সম্পর্কে সংক্ষেপে</label>
+                        <textarea placeholder="আপনার দক্ষতা, অভিজ্ঞতা ও বিশেষ যোগ্যতা সম্পর্কে লিখুন"></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">📝 নিবন্ধন করুন</button>
+                </form>
+
+                <div class="success-message" id="workerSuccess">
+                    <h3>✅ নিবন্ধন সফল হয়েছে!</h3>
+                    <p>আমরা আপনার প্রোফাইল যাচাই করে শীঘ্রই যোগাযোগ করব।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>🧹 Kamer Bedi</h3>
+                    <p>কাজের মানুষ, সম্মানের মানুষ</p>
+                </div>
+                <div class="footer-col">
+                    <h4>লিংক</h4>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>সাপোর্ট</h4>
+                    <ul>
+                        <li><a href="#">প্রায়শই জিজ্ঞাসিত প্রশ্ন</a></li>
+                        <li><a href="#">গোপনীয়তা নীতি</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>যোগাযোগ</h4>
+                    <p>📧 info@kamerbedi.com</p>
+                    <p>📞 +৮৮০ ১৭০০-০০০০০০</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kamer Bedi. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        function applyJob(jobTitle) {
+            alert(`✅ "${jobTitle}" পদের জন্য আপনার আবেদন গৃহীত হয়েছে!\nআমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।`);
+        }
+
+        function filterJobs(category) {
+            const cards = document.querySelectorAll('.job-card');
+            const tabs = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(tab => {
+                if (tab.textContent.toLowerCase().includes(category) || 
+                    (category === 'all' && tab.textContent.includes('সব'))) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        document.getElementById('workerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.form-submit');
+            btn.textContent = '⏳ নিবন্ধন হচ্ছে...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                document.getElementById('workerSuccess').style.display = 'block';
+                this.reset();
+                btn.textContent = '📝 নিবন্ধন করুন';
+                btn.disabled = false;
+                setTimeout(() => {
+                    document.getElementById('workerSuccess').style.display = 'none';
+                }, 5000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

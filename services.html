@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>সেবাসমূহ - Kamer Bedi</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .services-full {
+            padding: 60px 0;
+            background: var(--white);
+        }
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+        }
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
+        }
+        .search-box .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        .service-detail-card {
+            background: var(--white);
+            border: 1px solid #E5E7EB;
+            border-radius: var(--radius);
+            padding: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .service-detail-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+        .service-detail-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .service-detail-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        .service-detail-card p {
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .service-detail-card .price {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .service-detail-card .book-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 24px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .service-detail-card .book-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        .filter-tabs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .filter-tab {
+            padding: 8px 20px;
+            border-radius: 25px;
+            border: 2px solid #E5E7EB;
+            background: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .filter-tab:hover,
+        .filter-tab.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-icon">🧹</span>
+                <span class="brand-text">Kamer Bedi</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">হোম</a></li>
+                <li><a href="services.html" class="active">সেবাসমূহ</a></li>
+                <li><a href="post-job.html">চাকরি পোস্ট করুন</a></li>
+                <li><a href="find-work.html">কাজ খুঁজুন</a></li>
+                <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                <li><a href="blog.html">ব্লগ</a></li>
+                <li><a href="contact.html">যোগাযোগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="padding: 60px 0;">
+        <div class="container">
+            <h1 class="hero-title">আমাদের <span class="highlight">সেবাসমূহ</span></h1>
+            <p class="hero-subtitle">আপনার প্রয়োজন অনুযায়ী দক্ষ কর্মী খুঁজুন</p>
+        </div>
+    </section>
+
+    <!-- Services Full -->
+    <section class="services-full">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 সেবা খুঁজুন (যেমন: রান্না, ড্রাইভার...)" />
+                <span class="search-icon">🔍</span>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">সব</button>
+                <button class="filter-tab" data-filter="household">ঘর কাজ</button>
+                <button class="filter-tab" data-filter="cooking">রান্না</button>
+                <button class="filter-tab" data-filter="care">যত্ন</button>
+                <button class="filter-tab" data-filter="technical">কারিগরি</button>
+                <button class="filter-tab" data-filter="driving">ড্রাইভিং</button>
+            </div>
+
+            <div class="services-grid" id="servicesGrid">
+                <div class="service-detail-card" data-category="household">
+                    <div class="icon">🧹</div>
+                    <h3>ঘর পরিষ্কার</h3>
+                    <p>নিয়মিত বা নির্দিষ্ট সময়ের জন্য পূর্ণাঙ্গ ঘর পরিষ্কার</p>
+                    <span class="price">৳ ২০০-৫০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('ঘর পরিষ্কার')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="cooking">
+                    <div class="icon">🍳</div>
+                    <h3>রান্না</h3>
+                    <p>বাংলা, ভারতীয়, চাইনিজ সহ সব ধরনের রান্না</p>
+                    <span class="price">৳ ৩০০-৮০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('রান্না')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="care">
+                    <div class="icon">👶</div>
+                    <h3>বাচ্চা দেখাশোনা</h3>
+                    <p>নিরাপদ ও যত্নশীল শিশু পরিচর্যা</p>
+                    <span class="price">৳ ৩৫০-৭০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('বাচ্চা দেখাশোনা')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="care">
+                    <div class="icon">👴</div>
+                    <h3>বয়স্কদের সেবা</h3>
+                    <p>বয়স্ক ও অসুস্থদের পূর্ণাঙ্গ যত্ন</p>
+                    <span class="price">৳ ৪০০-৮০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('বয়স্কদের সেবা')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="driving">
+                    <div class="icon">🚗</div>
+                    <h3>ড্রাইভার</h3>
+                    <p>বিশ্বস্ত ও অভিজ্ঞ ড্রাইভার সার্ভিস</p>
+                    <span class="price">৳ ৫০০-১০০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('ড্রাইভার')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="technical">
+                    <div class="icon">🔧</div>
+                    <h3>বৈদ্যুতিক কাজ</h3>
+                    <p>বৈদ্যুতিক মেরামত ও স্থাপনা কাজ</p>
+                    <span class="price">৳ ৩০০-১৫০০/কাজ</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('বৈদ্যুতিক কাজ')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="technical">
+                    <div class="icon">🔧</div>
+                    <h3>প্লাম্বিং</h3>
+                    <p>পাইপ, টয়লেট, সিঙ্ক মেরামত</p>
+                    <span class="price">৳ ৩০০-১২০০/কাজ</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('প্লাম্বিং')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="household">
+                    <div class="icon">🧺</div>
+                    <h3>কাপড় ধোয়া ও ইস্ত্রি</h3>
+                    <p>পেশাদার কাপড় ধোয়া এবং ইস্ত্রি সেবা</p>
+                    <span class="price">৳ ১৫০-৪০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('কাপড় ধোয়া ও ইস্ত্রি')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="cooking">
+                    <div class="icon">🍰</div>
+                    <h3>বেকিং ও ডেজার্ট</h3>
+                    <p>কেক, পেস্ট্রি, মিষ্টি তৈরী</p>
+                    <span class="price">৳ ৫০০-২০০০/অর্ডার</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('বেকিং ও ডেজার্ট')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="care">
+                    <div class="icon">🐕</div>
+                    <h3>পোষা প্রাণীর যত্ন</h3>
+                    <p>পোষা প্রাণী দেখাশোনা ও হাঁটা</p>
+                    <span class="price">৳ ২০০-৫০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('পোষা প্রাণীর যত্ন')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="technical">
+                    <div class="icon">📱</div>
+                    <h3>ইলেকট্রনিক্স মেরামত</h3>
+                    <p>টিভি, ফোন, কম্পিউটার মেরামত</p>
+                    <span class="price">৳ ৫০০-৩০০০/কাজ</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('ইলেকট্রনিক্স মেরামত')">বুক করুন</button>
+                </div>
+
+                <div class="service-detail-card" data-category="household">
+                    <div class="icon">🌿</div>
+                    <h3>বাগান করা</h3>
+                    <p>বাগান পরিষ্কার, গাছ কাটা ও পরিচর্যা</p>
+                    <span class="price">৳ ৩০০-৮০০/দিন</span>
+                    <br />
+                    <button class="book-btn" onclick="bookService('বাগান করা')">বুক করুন</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>🧹 Kamer Bedi</h3>
+                    <p>কাজের মানুষ, সম্মানের মানুষ</p>
+                    <p>বিশ্বস্ত সেবা, নিশ্চিত সাফল্য</p>
+                </div>
+                <div class="footer-col">
+                    <h4>লিংক</h4>
+                    <ul>
+                        <li><a href="index.html">হোম</a></li>
+                        <li><a href="services.html">সেবাসমূহ</a></li>
+                        <li><a href="about.html">আমাদের সম্পর্কে</a></li>
+                        <li><a href="contact.html">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>সাপোর্ট</h4>
+                    <ul>
+                        <li><a href="#">প্রায়শই জিজ্ঞাসিত প্রশ্ন</a></li>
+                        <li><a href="#">গোপনীয়তা নীতি</a></li>
+                        <li><a href="#">শর্তাবলী</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>যোগাযোগ</h4>
+                    <p>📧 info@kamerbedi.com</p>
+                    <p>📞 +৮৮০ ১৭০০-০০০০০০</p>
+                    <div class="social-links">
+                        <a href="#">📱</a>
+                        <a href="#">📘</a>
+                        <a href="#">📸</a>
+                        <a href="#">▶️</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kamer Bedi. সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Service booking function
+        function bookService(service) {
+            alert(`✅ "${service}" সেবাটি বুক করার জন্য আপনাকে ধন্যবাদ!\nআমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।`);
+        }
+
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const serviceCards = document.querySelectorAll('.service-detail-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                serviceCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase();
+                serviceCards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = text.includes(query) ? 'block' : 'none';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
